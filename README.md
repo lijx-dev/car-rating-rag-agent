@@ -8,7 +8,7 @@
 ## 🔍 项目概览
 本项目是本科毕业论文《品牌汽车大数据评分研究》的产品化落地成果，面向购车消费者、汽车行业分析师、学术研究者打造一站式 AI 对话助手。
 融合AHP - 熵权法组合赋权模型、多源汽车数据与LangChain+LangGraph RAG 智能体，解决购车信息不对称、论文检索繁琐、行业数据分析效率低三大核心痛点。
-无实习经历・独立完成全流程：需求文档 → 原型设计 → 代码开发 → 在线部署 → 产品落地
+独立完成全流程：需求文档 → 原型设计 → 代码开发 → 在线部署 → 产品落地
 
 
 ## ✨ 核心亮点
@@ -30,13 +30,28 @@ AI 核心	LangChain、LangGraph、通义千问 (Qwen)
 
 
 ## ✨ 项目功能
-- 🤖 **智能路由**：基于LangGraph的工作流，自动识别问题类型
-- 🔍 **混合检索**：FAISS向量检索 + BM25关键词检索
-- 💬 **可视化界面**：Streamlit专业Web界面，支持流式输出
-- 📊 **数据看板**：Top10车型数据可视化，交互式图表
-- ⚙️ **配置管理**：侧边栏设置，支持模型切换、参数调整
+1. 📊 汽车数据可视化看板
+Top10 车型综合排名实时展示
+综合得分柱状图对比
+产品力 / 创新力 / 市场表现 / 用户口碑四大维度得分可视化
+2. 💬 智能对话交互
+车型评分 / 排名精准查询（支持特斯拉、比亚迪、理想等 24 款主流车型）
+汽车行业知识智能问答（购车技巧、车型对比、行业趋势）
+流式打字机输出，提升交互体验
+对话历史持久化记录
+3. 🔍 RAG 行业知识库检索
+基于公开汽车评测、行业报告构建向量库
+相似度检索 + 来源标注（文档名称）
+支持自定义检索 TopK 参数
+4. 🧠 智能路由系统
+意图自动识别：车型数据→工具调用 / 行业问题→RAG 检索 / 闲聊→友好回复
+结构化数据精准查询，无编造、无 hallucination
 
-
+## 📄 产品需求文档（核心摘要）
+产品定位：汽车垂直领域 AI 购车助手 + 行业知识智能检索工具
+目标用户：购车消费者、汽车行业从业者、汽车爱好者
+核心指标：数据准确率 100%、检索精度≥90%、系统响应≤5 秒
+业务规则：基于 AHP - 熵权法评分体系，严格遵循模型计算逻辑
 ---
 
 ## 🚀 快速部署
@@ -57,31 +72,48 @@ streamlit run app.py
 然后打开浏览器访问：http://localhost:8501
 
 ## 📸 项目截图
-### 主界面
-<img width="3184" height="1736" alt="image" src="https://github.com/user-attachments/assets/10d50df0-4ade-4559-8af4-bf5f29e3d812" />
 
-### 数据看板
-<img width="2488" height="1176" alt="image" src="https://github.com/user-attachments/assets/8bcc28dc-de3c-4ea8-8701-9080fa0b88d7" />
+### 1. 主界面概览
+![主界面](./docs/prototype/main_interface.png)
+
+### 2. 数据可视化看板
+![数据看板](./docs/prototype/data_dashboard.png)
+
+### 3. 智能对话交互
+![对话示例1](./docs/prototype/chat_1.png)
+![对话示例2](./docs/prototype/chat_2.png)
+![对话示例3](./docs/prototype/chat_3.png)
+
+## 📄 产品文档
+- [完整产品需求文档 PRD.md](sslocal://flow/file_open?url=.%2Fdocs%2FPRD.md&flow_extra=eyJsaW5rX3R5cGUiOiJjb2RlX2ludGVycHJldGVyIn0=)
 
 
-### 智能对话
-<img width="2480" height="1392" alt="image" src="https://github.com/user-attachments/assets/42ab76dc-eab0-4b28-ab8a-989bf820ada0" />
-
-<img width="2408" height="1400" alt="image" src="https://github.com/user-attachments/assets/f7e25a38-fa47-4895-90a6-de05ca996550" />
-
-<img width="2530" height="1168" alt="image" src="https://github.com/user-attachments/assets/24b0eaa1-8a0e-4d5a-9f67-b67cbcc1ddd8" />
-
+## 项目结构
 
 car-rating-rag-agent/
-├── app.py              # Streamlit Web界面（核心）
-├── data/               # 示例数据（车型评分CSV）
-├── docs/               # 项目截图
-├── requirements.txt    # 依赖文件
-├── .env.example        # 环境变量模板
-├── .gitignore          # Git忽略文件
-├── LICENSE             # 开源许可证
-└── README.md           # 项目说明
+├── .idea/
+├── data/
+├── docs/
+│   ├── PRD.md
+│   └── prototype/
+│       ├── main_interface.png
+│       ├── data_dashboard.png
+│       ├── chat_1.png
+│       ├── chat_2.png
+│       └── chat_3.png
+├── versions/
+│   ├── v1_basic_rag.py
+│   ├── v2_langgraph_agent.py
+│   ├── v3_tool_call.py
+│   ├── v4_advance_rag.py
+│   └── main.py
+├── .gitattributes
+├── .gitignore
+├── LICENSE
+├── README.md
+├── app.py
+└── requirements.txt
 
-###作者
+### 作者
 Junxian Li
 1564536767@qq.com
