@@ -1,0 +1,17 @@
+streamlit
+fastapi
+uvicorn
+plotly
+pandas
+pypdf
+langchain
+langchain-community
+langchain-text-splitters
+langgraph
+langchain-classic
+dashscope
+sentence-transformers
+faiss-cpu
+rank-bm25
+python-dotenv
+pyyaml
