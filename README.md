@@ -36,16 +36,23 @@ AI 核心	LangChain、LangGraph、通义千问 (Qwen)
 - 📊 **数据看板**：Top10车型数据可视化，交互式图表
 - ⚙️ **配置管理**：侧边栏设置，支持模型切换、参数调整
 
-## 🚀 快速开始
-### 1. 克隆仓库
+
+---
+
+## 🚀 快速部署
+### 1. 克隆项目
 ```bash
 git clone https://github.com/wembyinspurs/car-rating-rag-agent.git
 cd car-rating-rag-agent
-###2. 安装依赖
+```
+
+### 2. 安装依赖
 pip install -r requirements.txt
-###3.配置环境变量：复制 .env.example 为 .env，填入你的 API Key：
+
+### 3.配置环境变量：复制 .env.example 为 .env，填入你的 API Key：
 DASHSCOPE_API_KEY=your-api-key-here
-###4，运行项目
+
+### 4，运行项目
 streamlit run app.py
 然后打开浏览器访问：http://localhost:8501
 
