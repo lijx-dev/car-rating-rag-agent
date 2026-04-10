@@ -1,4 +1,4 @@
-# ====================== 汽车评分RAG智能体 - 稳定修复版 ======================
+# ====================== 汽车评分RAG智能体 ======================
 import streamlit as st
 import os
 import pandas as pd
@@ -23,7 +23,7 @@ from pydantic import BaseModel, Field
 
 import pypdf
 
-# ====================== 页面配置（必须放在最前面） ======================
+# ====================== 页面配置 ======================
 st.set_page_config(page_title="汽车评分RAG智能体", page_icon="🚗", layout="wide")
 
 # ====================== 配置与全局变量 ======================
@@ -39,7 +39,7 @@ if not YOUR_API_KEY:
     raise ValueError("请在.env文件中配置DASHSCOPE_API_KEY！")
 
 
-# ====================== 车型查询工具（稳定版） ======================
+# ====================== 车型查询工具 ======================
 def get_top5_cars():
     """获取综合排名前5的车型数据"""
     if 'car_df' not in st.session_state or st.session_state.car_df is None:
@@ -106,7 +106,7 @@ def init_system():
     return car_df, vs, llm
 
 
-# ====================== 智能路由（稳定版：强制关键词匹配） ======================
+# ====================== 智能路由 ======================
 def get_route(query: str):
     """根据用户问题，强制分配路由，100%稳定"""
     q = query.lower()
@@ -146,7 +146,7 @@ def main():
     st.title("🚗 汽车品牌大数据评分RAG智能体")
     st.caption("基于LangChain + Streamlit 的可视化对话系统")
 
-    # 4. 数据看板（放在顶部）
+    # 4. 数据看板
     st.markdown("---")
     st.subheader("📊 车型数据看板")
     if st.session_state.car_df is not None:
@@ -192,7 +192,7 @@ def main():
 
             # 2. 执行对应逻辑
             if route == "tool_call":
-                # 车型工具调用：直接获取数据，100%稳定
+                # 车型工具调用：直接获取数据
                 if any(k in prompt.lower() for k in ["最高", "第一", "top5", "前五", "排名前5"]):
                     context = get_top5_cars()
                 else:
